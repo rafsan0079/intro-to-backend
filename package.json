@@ -1,0 +1,27 @@
+{
+  "name": "intro-to-backend",
+  "version": "1.0.0",
+  "description": "a tutorial for intro to backend",
+  "homepage": "https://github.com/rafsan0079/intro-to-backend#readme",
+  "bugs": {
+    "url": "https://github.com/rafsan0079/intro-to-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafsan0079/intro-to-backend.git"
+  },
+  "license": "ISC",
+  "author": "Rafsan Alam",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/src/index.js",
+    "dev": "nodemon backend/src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.11.1",
+    "nodemon": "^1.19.4"
+  }
+}

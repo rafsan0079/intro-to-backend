@@ -1,0 +1,42 @@
+import {User } from "../models/user.model.js";
+
+const registerUser = async (req,res) => {
+    try {
+        const {username,email,password} = req.body;
+
+        //basic validation
+
+        if (!username || !password || !email){
+            return res.status(400).json({message: "All fields are important!"});
+        }
+        
+        // check if user exists already
+
+        const existing = await User.findOne({email: email.toLowerCase()});
+        if(existing){
+            return res.status(400).json({message : "user already exists!"});
+        }
+
+        //create user
+
+        const user = await User.create({
+            username,
+            email:email.toLowerCase(),
+            password,
+            loggenIn: false, 
+        });
+
+        res.status(201).json({
+            message: "User registred",
+            user: {id: user._id,email: user.email,username:user.username}
+        })
+
+    } catch (error) {
+        res.status(500).json({messege: "Internal server error",error:error.message});
+
+    }
+};
+
+export {
+    registerUser
+};
